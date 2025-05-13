@@ -1,0 +1,156 @@
+# Virtual Research Lab Repository
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Table of contents
+
+*Last modified* : {docdate} 
+
+
+*Document status* :  DRAFT
+
+## Introduction
+
+The purpose of this document is to describe the basic features that the "Core" Service will include for the Virtual Research Lab Readiness Framework.
+
+
+### Assumptions
+
+.Assumptions
+[cols="1e,6e,1e"]
+|===
+| ID | Detail | Status
+
+| HA1
+| Newly created labs will begin from Level 0 to experiment
+| Unverified
+
+| HA2
+| The creation of a Virtual Lab is a manual Operation
+| Unverified
+|===
+
+## General context
+
+### Objectives
+
+[TIP]
+Virtual Research Labs (VRL) allows scientists to experiment with large datasets, and verify other experiments accordingly given the correctness of each Lab.
+====
+Each VRL has several quality properties that can act as conditions to signal the _maturity_ of each Lab.
+====
+====
+https://naavre.net/[NaaVRE] is an implementation of a Virtual Research Lab, however without identifying the _maturity_ level of each lab.
+====
+====
+The purpose of this service is to act as a repository which tracks the Labs and their corresponding _maturity_ or _readiness_ level.
+====
+====
+Once a Virtual Research Lab is considered _mature_ enough, it can be used from other users for their own research.
+====
+
+### Actors
+
+[TIP]
+The main categories of users that will interact with the application
+
+[cols="1e,4e,1e"]
+|===
+| Actor | Description | Organization 
+
+| Core Developer
+| Creates/Maintains Virtual Research Labs
+| N/A
+
+| Coordinator
+| Technical Owner of the Lab, can push it to the next level
+| ERiC (?)
+
+| User
+| Domain scientist using the Lab for their own Research
+| N/A
+
+|===
+
+
+
+
+## Requirements
+
+### Lab Registration
+[cols="1e,6e,1e"]
+|===
+| ID | Detail | Status
+
+| LR1
+| A scientist can express their interest to create a new Virtual Lab in order to experiment with a new concept
+| Unverified
+
+| LR2
+| The Lab creation request should include the purpose and the project timeline
+| Unverified
+
+| LR3
+| The Request can be approved/declined by (undefined role?)
+| Unverified
+|===
+
+### Lab Readiness Levels
+[cols="1e,6e,1e"]
+|===
+| ID | Detail | Status
+
+| LRR1
+| Each VRL should maintain the current _readiness_ level
+| Unverified
+
+| LRR2
+| For each _readiness_ level, the exit conditions should have their own state to define whether they are satisfied or not
+| Unverified
+
+| LRR3
+| All the modifications regarding the readiness levels and the exit conditions, should be saved for historic purposes
+| Unverified
+
+| LRR4
+| Each _readiness_ level corresponds to a configuration of basic exit conditions 
+| Unverified
+
+| LRR5
+| Custom exit conditions may be added by the Coordinator 
+| Unverified
+|===
+
+### Interoperability
+
+[cols="1e,6e,1e"]
+|===
+| ID | Detail | Status
+
+| ORR1
+| Access should be provided to external systems and update the _exit conditions_
+| Unverified
+
+
+|===
+
+## Schema
+
+### Proposed Models
+#### Relational
+This is an ER diagram that can be applied in a Relational Database.
+image:media/VRE Core Entities draft.png[ER diagram]
+
+#### Non Relational
+This an (outdated) view of how the labs can be modelled in a document db.
+image:media/vre_lab_schema.png[json overview]
+
+## Proof Of Concept
+
+In order to verify the correctness of this framework a proof of concept https://github.com/ikoko3/vre_maturity_level_management[application] is also being developed.
+
+### Operational Endpoints
+The endpoints are exposed over Swagger using the Open API 3.0 specification.
+image:media/swagger_draft.png[Indicative Endpoints]
