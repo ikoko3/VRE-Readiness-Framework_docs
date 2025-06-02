@@ -1,0 +1,25 @@
+
+
+@startuml
+|Golden User|
+start
+:Submit lab request;
+if (New or Clone?) then
+  :Define new lab;
+else
+  :Select lab to clone;
+endif
+|Coordinator|
+:Review feasibility;
+if (Feasible?) then
+  :Approve;
+|VL Developer|
+:Assign to developer;
+:Provision lab;
+else
+  |Coordinator|
+  :Request revision;
+endif
+stop
+@enduml
+

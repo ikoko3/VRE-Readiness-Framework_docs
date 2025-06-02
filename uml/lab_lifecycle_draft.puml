@@ -1,0 +1,33 @@
+@startuml
+start
+
+:Golden User proposes lab;
+:Coordinator reviews feasibility;
+
+if (Feasible?) then
+  :Core Developer provisions lab (L1);
+  :Development and CI/CD setup;
+
+  if (Development complete?) then
+    :Golden User runs experiments (L2);
+    :Validation and results;
+
+    if (Valid?) then
+      :Publish snapshot with DOI (L2);
+      :Training setup for Silver Users (L3);
+      :Onboarding workshops;
+      :Lab made operational for Ivory Users (L4);
+    else
+      :Refactor lab;
+      repeat
+        :Development updates;
+        :Re-run experiments;
+      repeat while (Still invalid?)
+    endif
+
+  else
+    :Refine requirements;
+    -> Development and CI/CD setup;
+  endif
+
+else

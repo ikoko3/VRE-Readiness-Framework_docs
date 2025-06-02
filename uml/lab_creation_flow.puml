@@ -1,0 +1,25 @@
+@startuml
+start
+
+:Golden User submits lab request;
+if (Plain lab?) then
+  :Define scientific scenario and goals;
+else
+  :Select existing lab to clone;
+  :Specify modifications and scientific scenario;
+endif
+
+:Coordinator reviews feasibility;
+
+if (Feasible?) then
+  :Assign Virtual Lab Developer;
+  :Provision basic lab (L0);
+  :Initialize configuration & dependencies;
+  :Notify Golden User;
+else
+  :Request revision or reject;
+  stop
+endif
+
+stop
+@enduml
