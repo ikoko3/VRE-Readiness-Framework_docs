@@ -60,7 +60,7 @@ The main categories of users that will interact with the application
 |===
 | Actor | Description | Organization 
 
-| Core Developer
+| Component Developer
 | Creates/Maintains Virtual Research Labs
 | N/A
 
@@ -147,6 +147,69 @@ image:media/VRE Core Entities draft.png[ER diagram]
 This an (outdated) view of how the labs can be modelled in a document db.
 image:media/vre_lab_schema.png[json overview]
 
+## Role Management
+### Access Management
+Based on the https://github.com/NaaVRE/NaaVRE-architecture/tree/main[architecture], 
+https://www.keycloak.org/[Keycloak] is used for Access Management. The following scopes need to be created to ensure that access is protected.
+
+The distribution of this token can decised on a later stage.
+
+[cols="e,2e"]
+|===
+| Scope | Description
+
+| vl:create
+| Propose or register a new virtual lab
+
+
+| vl:review
+| Approve/Deny exit conditions
+
+|===
+
+### Associated Roles
+The management system associates specific roles with the lab usage. Some of the roles can be global across the VRE, and some are specific to the VL only. For scaling purposes we can consider the global ones.
+
+TODO: Keep only the relevant roles for this service. Move all of them to a different point.
+
+[cols="e,2e,e"]
+|===
+| Role | Code | Scope
+
+| Golden User | VLGU | VRE-specific
+
+| Component/Services Developer | SCD | VRE-specific
+
+| Silver User | VLSU | VRE-specific
+
+| Ivory User | VLIU | VRE-specific
+
+| Virtual Lab Code Reviewer | VLCR | VRE-specific
+
+| Scientific Steering Board | SSB | VRE-specific
+
+| Coordinator | CO | Global
+
+| Community Supporter | CS | Global
+
+| Virtual Lab Trainer | TR | VRE-specific
+
+| VRE DevOps Engineer | DO | Global
+
+| VRE Researcher | VR | Global
+
+| User Supporter | US | VRE-specific
+
+| Infrastructure Supporter | IS | Global
+
+|===
+
+### Application Modeling
+The previous roles indicate that each lab needs to persist information regarding its users and the role they hold in each lab. Additional roles can be saved as contributors or just visitors. It is valuable to keep this information of the role of the users so the usage can be verified at a later point. 
+
+An access log can be also created to study the usage patterns. Another issue we must take care of is the possibility to change  the roles of each lab. The schema should support multiple roles and keep reference of the changes.
+
+
 ## Proof Of Concept
 
 In order to verify the correctness of this framework a proof of concept https://github.com/ikoko3/vre_maturity_level_management[application] is also being developed.
@@ -154,3 +217,4 @@ In order to verify the correctness of this framework a proof of concept https://
 ### Operational Endpoints
 The endpoints are exposed over Swagger using the Open API 3.0 specification.
 image:media/swagger_draft.png[Indicative Endpoints]
+
