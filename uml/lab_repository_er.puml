@@ -1,0 +1,53 @@
+@startuml
+title User–Virtual Lab Role Assignment Schema
+
+caption Some of the roles are considered to be VL specific, while others are global
+
+legend
+  ||--o{  One-to-many
+  *       Primary key
+  Byte    0 or 1, used as Boolean
+endlegend
+
+entity "User" {
+  * user_id : UUID
+  * reference_id : String
+}
+
+
+entity "RoleDefinition" {
+    * code : String
+    name : String
+    description : String
+    is_global : Byte
+}
+
+entity "GlobalUserRole" {
+  * role_id : UUID
+  role_name : String
+  description : String
+}
+
+entity "VirtualLab" {
+  * lab_id : UUID
+  name : String
+  description : Text
+  maturity_level : Int
+}
+
+entity "VirtualLabUserRole" {
+  * lab_id : UUID
+  * user_id : UUID
+  * role_id : UUID
+  assigned_at : DateTime
+}
+
+RoleDefinition ||--o{ GlobalUserRole : role
+RoleDefinition ||--o{ VirtualLabUserRole : role
+User ||--o{ GlobalUserRole : has_global_role
+
+User ||--o{ VirtualLabUserRole : has_lab_role
+VirtualLab ||--o{ VirtualLabUserRole : includes_user
+
+
+@enduml 

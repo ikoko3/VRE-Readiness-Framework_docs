@@ -1,0 +1,29 @@
+@startuml
+title DocumentDb Oriented -  User–VL Context
+
+entity "User" {
+  * _id : UUID
+  * reference_id : String
+  --
+  global_roles : [RoleCode]
+}
+
+entity "VirtualLab" {
+  * _id : UUID
+  * name : String
+  maturity_level : Int
+  --
+  assigned_users : [ { user_id, role_code, assigned_at } ]
+}
+
+entity "RoleDefinition" {
+  * code : String
+  name : String
+  is_global : Bool
+}
+
+User --> RoleDefinition : global_roles references
+VirtualLab --> RoleDefinition : assigned_users.role_code
+VirtualLab --> User : assigned_users.user_id
+
+@enduml

@@ -209,6 +209,9 @@ The previous roles indicate that each lab needs to persist information regarding
 
 An access log can be also created to study the usage patterns. Another issue we must take care of is the possibility to change  the roles of each lab. The schema should support multiple roles and keep reference of the changes.
 
+image:out/uml/lab_repository_er/lab_repository_er.svg[ER]
+
+image:out/uml/lab_repository_models/lab_repository_models.svg[ER]
 
 ## Proof Of Concept
 
