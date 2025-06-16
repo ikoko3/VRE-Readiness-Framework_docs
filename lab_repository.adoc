@@ -256,6 +256,8 @@ This list of the statuses should describe an exit condition.
 * Under Discussion
 * Verified
 
+image:out/uml/level_upgrade_state_diagram/diagram.svg[Level Diagram]
+
 #### Automatic assessment
 This app exposes endpoints to update the exit condition status. The automatic assessment of this project is part of a different app.
 

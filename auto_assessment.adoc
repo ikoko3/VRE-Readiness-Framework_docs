@@ -1,0 +1,15 @@
+# Auto Assessment Component
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Table of contents
+
+*Last modified* : {docdate} 
+
+*Document status* :  DRAFT
+
+## Introduction
+
+This document describes the major component that will auto assess the progress of specific exit conditions, to increase the effectiveness of the proposed platform.

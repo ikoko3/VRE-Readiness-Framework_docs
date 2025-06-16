@@ -1,0 +1,44 @@
+@startuml diagram
+title Virtual Lab Lifecycle (L0–L4)
+
+[*] --> dev
+
+state "In Development" as dev <<development>>
+dev : Complete tasks required at the current level
+
+state "Evaluation Phase" as eval <<evaluation>>
+eval : Coordinator checks quality and exit conditions
+
+state "Promotion to Next Level" as prog <<transition>>
+prog : Exit conditions approved; lab promoted
+
+state "Required Modifications" as modification <<feedback>>
+modification : Coordinator suggests changes
+
+state "Operational Maintenance" as maintenance <<maintenance>>
+maintenance : Maintain and monitor the lab in production
+
+dev --> eval : request evaluation
+eval --> prog : approval
+eval --> modification : request changes
+modification --> eval : resubmit for evaluation
+prog --> dev : move to next level (L0–L3)
+prog --> maintenance : lab reaches L4
+
+note left of dev
+Applies to labs in levels L0 to L3
+end note
+
+note left of maintenance
+Only applies to L4 labs in operational state
+end note
+
+legend left
+<<development>>  Development activities
+<<evaluation>>   Quality assessment by Coordinator
+<<transition>>   Advancement to next maturity level
+<<feedback>>     Required revisions
+<<maintenance>>  Operational upkeep for L4 labs
+endlegend
+
+@enduml

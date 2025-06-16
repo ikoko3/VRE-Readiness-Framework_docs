@@ -1,0 +1,24 @@
+# Framework Extensions
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Table of contents
+
+*Last modified* : {docdate} 
+
+*Document status* :  DRAFT
+
+## Introduction
+
+This document describes future steps that can be taken to automate further processes and provide value to the framework.
+
+## CMS Tool
+Explain why an external Content Management System can centralize the information and display it further.
+
+## Unified PM tools
+Explain why there are already different PM tools and there should be a system to indicate what needs to be attended.
+
+## Notification System
+Notification Platforms can be utilized to engage its users

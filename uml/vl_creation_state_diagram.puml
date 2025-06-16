@@ -1,0 +1,13 @@
+@startuml
+title Virtual Lab Lifecycle – State Diagram
+
+[*] --> Proposed
+
+Proposed --> Provisioned : feasibility approved
+Provisioned --> Validated : development complete
+Validated --> Published : experiments validated
+Published --> Archived : deprecated or replaced
+
+Published --> Provisioned : cloned for new version
+
+@enduml

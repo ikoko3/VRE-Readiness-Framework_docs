@@ -1,0 +1,43 @@
+# VL Web Application -  FrontEnd
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Table of contents
+
+*Last modified* : {docdate} 
+
+
+*Document status* :  DRAFT
+
+## Introduction
+
+This document describes the visual components that can be created to provide usabillity to the upcoming framework.
+
+### Objectives
+
+[TIP]
+The interactions between the users of the framework is described in depth in the link:lab_repository.adoc[Lab Repository] document.
+====
+This page describes several different components, and it proposes a grouping but that's up to the developer and the decisions have to be made based on the state of the platform by the time it is developed.
+====
+
+
+### Technology Stack
+The PoC is developed using Next.js (React) based on the link:https://github.com/NaaVRE/NaaVRE-architecture[architecture] of the newest version of NaaVRE.
+
+## Lab State 
+
+### Lab Data
+
+### Exit Conditions
+
+### User Role Information
+
+
+## Coordinator Portal
+
+### Custom Actions
+
+## Dependencies

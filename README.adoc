@@ -44,14 +44,16 @@ _TODO_
 ## Architecture
 ### Overview
 
-image:out/architecture_proposal/architecture_proposal.svg[Proposal]
+image:out/uml/architecture_proposal/architecture_proposal.svg[Proposal]
 
-### Proposed Components
+### List of Documents
+
+The following documents describe the technical details and proposal of the framework.
 
 - link:lab_repository.adoc[Lab Repository]
-- Progress Detection Tool
-- Project Management Tools
-- Engagement Solutions
+- link:visualization.adoc[Visualization Components]
+- link:auto_assessment.adoc[Progress Detection Tool]
+- link:extensions.adoc[Future Expansion]
 
 
 
