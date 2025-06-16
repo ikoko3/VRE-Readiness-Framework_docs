@@ -1,0 +1,44 @@
+@startuml exitCondition_kpi
+title Exit Condition States
+
+state "Evaluation Requested" as req_eval #OrangeRed
+req_eval : The lab owner has requested evaluation
+
+state "Under Evalutation" as eval #yellow
+eval : The coordinator is manually evaluating the condition
+
+state "Unfulfilled" as unfullfilled #red
+unfullfilled : This needs to be implemented
+
+state "In Progress" as in_progress #Orange{
+in_progress: There is a way to quantify the progress of this exit condition
+
+ state "Calculated Progress" as calculated
+ calculated: Update status and indicate Last calculated at 
+ state "Assessing" as calculating
+ calculating: The assessment mechanism is calculating the result
+
+calculated --> calculating : check based on specific triggers
+calculating --> calculated 
+}
+
+note bottom of in_progress
+When an exit condition can be automatically be detected, the status will remain in progress
+but further metrics can be utillized to indicate the progress.
+end note
+
+state "Verified" as verified #Green
+verified: The exit condition is verified either manually or automatically
+
+[*] --> unfullfilled
+unfullfilled --> in_progress : Progress is automatically detected
+in_progress --> verified : Progress is automatically detected
+
+unfullfilled --> req_eval : The lab owner has requested evaluation
+req_eval --> eval : The coordinator checks the specific exit condition
+eval --> unfullfilled : The coordinator rejects it
+eval --> verified : The coordinator approves it
+
+
+
+@enduml

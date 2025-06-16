@@ -240,7 +240,16 @@ The user who request a new VL, will also be its golden user. The request has to 
 
 ### Level and Exit Condition Management
 #### VL Levels
-Explain their purpose
+The link:https://naavre.net/docs/readiness_levels/[maturity or readiness ]of a Virtual Lab is described with one of the following Levels (L0, L1, L2, L3, L4) and it describes whether it is ready to be used across the scientific community. 
+
+
+====
+Each Level has a list of exit conditions that have to be satisfied, so the lab can move to the next level.
+====
+
+When the VL owner (the golden user) wants to move the lab to the next level, they must request an evaluation (from the coordinator). Depending on the quality, the coordinator can either request modifications or move the lab to the next level.
+
+image:out/uml/level_upgrade_state_diagram/diagram.svg[Level Diagram]
 
 #### Exit Condition
 This entity acts as an item in a check list, which shall be marked as completed, for the lab to move to the next stage.
@@ -256,10 +265,13 @@ This list of the statuses should describe an exit condition.
 * Under Discussion
 * Verified
 
-image:out/uml/level_upgrade_state_diagram/diagram.svg[Level Diagram]
+image:out/uml/exit_condition_state_diagram/exitCondition_kpi.svg[exit condition statuses]
+
 
 #### Automatic assessment
 This app exposes endpoints to update the exit condition status. The automatic assessment of this project is part of a different app.
+
+See more link:auto_assessment.adoc[here]
 
 ### User Role Management
 #### User Role Relation
