@@ -1,0 +1,30 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+title Auto Assessment View
+
+Person(user, "Scientist / Lab Owner")
+Person(coordinator, "Coordinator")
+
+System(system, "VL Readiness Management System", "Tracks Virtual Lab maturity based on exit conditions")
+
+Container(webapp, "Web Interface", "React/Next.js", "Displays lab status and progress")
+Container(api, "Task API Gateway", "Node.js", "Exposes tasks to be executed via HTTP")
+Container(taskEngine, "Task Execution Engine", "Dockerized Services", "Executes task logic and returns metric output")
+Container(metricDB, "Metric Store", "MongoDB", "Stores raw task results and progress metrics")
+Container(mappingService, "Metric Mapping Service", "Node.js", "Maps metrics to generic readiness indicators")
+Container(conditionEvaluator, "Exit Condition Evaluator", "Service", "Determines readiness based on metrics")
+Container(triggerService, "External Trigger Integrations", "Cloud Hooks", "Triggers tasks from GitHub Actions, CRON, etc.")
+
+Rel(user, webapp, "Views readiness level and requests evaluations")
+Rel(coordinator, webapp, "Manages evaluations and approves progression")
+Rel(webapp, api, "Sends task execution requests")
+Rel(api, taskEngine, "Dispatches task with parameters")
+Rel(taskEngine, metricDB, "Stores metric output")
+Rel(metricDB, mappingService, "Provides metric values")
+Rel(mappingService, conditionEvaluator, "Maps to generic indicators")
+Rel(conditionEvaluator, webapp, "Updates status of exit conditions")
+Rel(triggerService, api, "Triggers task execution (async)")
+
+@enduml

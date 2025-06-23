@@ -1,0 +1,68 @@
+@startuml Auto Assessment models
+
+title Auto Assessment Models
+
+entity "Task Definition" as TD {
+  * _id : String
+  short_description : String
+  description_url : String
+  version : String
+  --
+  associated_exit_conditions : [EC_codes]
+}
+
+entity "Task" as T {
+  * _id : UUID
+  * task_definition_id : String
+  * vl_reference : VLReference
+  status : String
+  version: String
+  execution_parameters: EP
+  --
+  execution_metadata : ExecutionMetadata
+  result : ExecutionResult
+  error : ExecutionError
+}
+
+entity "VLReference" as VLR {
+  vl_id : UUID
+  exit_condition_ids : [UUID]
+}
+
+entity "Execution Metadata" as EM {
+  initiated_at : DateTime
+  finished_at : DateTime
+  triggered_by : String
+  trigger_source : String
+}
+
+entity "Execution Result" as ER {
+
+}
+
+note bottom of ER
+The result object will vary based on the version and the task definition
+end note
+
+entity "Execution Error" as EE {
+  error_code : String
+  message : String
+  stacktrace : Text
+}
+
+entity "Execution Parameters" as EP {
+  
+}
+
+note top of EP
+The parameters object is specific to the task execution
+end note
+
+TD --> T : Specifies task type
+T --> VLR : targets
+T --> EM : has metadata
+T --> ER : produces result
+T --> EE : may cause error
+T --> EP : may require
+
+@enduml
