@@ -48,6 +48,9 @@ A task definition is a record that links the itended behaviour of a task with th
 #### Executable Task
 This entity represents the outcome of a task execution. It has to be linked with a task definition. It should also contain several objects such as the result of the execution (specific), the error (if it failed), the version of the executable, and reference to the VL.
 
+#### Exit Condition Relation 
+A task definition includes a reference to one or many exit conditions. The task's outcome varies on the task type and on the available data, and that means that the result might not be enough to consider a single exit condition "satisfied". Additionally, the result of a task could potentially support the "approval" of two exit conditions if they rely on similar data. The indicated fields display only the relation between tasks and exit conditions, and they do not suggest that the outcome fully satisfies a specific condition.
+
 ### Metric Subtypes
 This component identifies two main type of metrics for the assessment of the exit conditions.
 
@@ -61,7 +64,7 @@ Considering this condition: 'External code use, such as command-line interface t
 
 . number of cli interfaces
 . number of cli interfaces with label
-. perentage of cli interfaces with label
+. percentage of cli interfaces with label
 ====
 
 #### Secondary Exit Condition Metrics
@@ -115,7 +118,7 @@ Consider these following exit conditions that could be potentially automatically
 In order to verify the following statements, an application would need different kind of experiments to reach a conclusion for each of them. 
 ====
 
-The tasks should be logically disconected from each other and they shouldn't be coupled, so each task can run independently. There are several design patterns that can be used to achieve this result.
+The tasks should be logically disconected from each other and they should not be coupled, so each task can run independently. There are several design patterns that can be used to achieve this result.
 
 * Visitor Pattern
 * Command Pattern
@@ -170,3 +173,11 @@ Each VL contains some metadata, that increase its visibility and reachability. A
 
 ### AI quality checks
 Multiple AI tools can provide indications regarding the quality of the code and other aspects of a VL. If a task can be achieved with the use of AI tools, then this could be integrated with this component which would receive the score of an AI process and update the exit condition accordingly.
+
+## Further extnsions
+This sections discusses some ideas for future extensions for this project, as long as they can be considered valuable or necessary. These are directions that could contribute to maintainability and scallability, but they also increase the initial complexity.
+
+### Task Chain 
+This documents supports the creation of tasks as "atomic" operations that focus on something very specific and provide a relevant result. This means that some exit conditions will require multiple tasks to be executed, and some times the outcome of some tasks will be required as input for others. This component could benefit from a task orchestration, which will use the tasks as smaller blocks to create complex logic, reusing the existing code. 
+
+This feature will be justified, once the use of this tool is widely used and the number of the VLs has increased deeming this functionality usefull,
