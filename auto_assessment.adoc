@@ -72,6 +72,8 @@ The overall goal of each Task is to reach a conclusion regarding the completion 
 
 These result should derive from the primary metrics, where a transformer should convert the primary values to the final ones based on the quality standards of each exit condition.
 
+These metrics should be defined in the link:lab_repository.adoc[VL Repository Component] and they should be referenced here. The values stands as a contract between these components.
+
 ====
 
 .Example of the metrics
@@ -174,7 +176,7 @@ Each VL contains some metadata, that increase its visibility and reachability. A
 ### AI quality checks
 Multiple AI tools can provide indications regarding the quality of the code and other aspects of a VL. If a task can be achieved with the use of AI tools, then this could be integrated with this component which would receive the score of an AI process and update the exit condition accordingly.
 
-## Further extnsions
+## Further extensions
 This sections discusses some ideas for future extensions for this project, as long as they can be considered valuable or necessary. These are directions that could contribute to maintainability and scallability, but they also increase the initial complexity.
 
 ### Task Chain 

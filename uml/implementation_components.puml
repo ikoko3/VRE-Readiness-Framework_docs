@@ -1,0 +1,60 @@
+@startuml PoC Architecture
+title Implementation Components
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
+!include $ICONURL/common.puml
+
+!include $ICONURL/devicons/mysql.puml
+!include $ICONURL/devicons/react.puml
+!include $ICONURL/devicons/nodejs.puml
+!include $ICONURL/devicons/mongodb.puml
+!include $ICONURL/material/perm_identity.puml
+
+SHOW_PERSON_OUTLINE()
+
+AddElementTag("backendContainer", $fontColor=$ELEMENT_FONT_COLOR, $bgColor="#335DA5", $shape=EightSidedShape(), $legendText="backend container (eight sided)")
+AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
+AddRelTag("sync/async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DottedLine())
+
+System_Boundary(app, "PoC System") {
+
+    DEV_REACT(frontend, "Frontend (Next.js)")
+    note right of frontend
+      The user-facing React app built with Next.js.
+      Communicates with the backend via API.
+    end note
+
+    DEV_NODEJS(backend, "Backend (Node.js)")
+    note right of backend
+      Express.js service handling business logic,
+      user requests, and integration with DB and auth.
+    end note
+
+    DEV_MONGODB(database, "MongoDB")
+    note right of database
+      Document-based persistence layer.
+      Stores labs, users, roles, and condition data.
+    end note
+
+    MATERIAL_PERM_IDENTITY(auth, "Keycloak")
+    note right of auth
+      Identity and Access Management.
+      Issues JWTs used for secure authentication.
+    end note
+}
+
+Person(user, "User", "Scientific or technical user of the Virtual Lab")
+note left of user
+  Represents scientists interacting with
+  the system to manage and evaluate Virtual Labs.
+end note
+
+Rel(user, frontend, "Uses", "HTTPS")
+Rel(frontend, backend, "API Calls", "HTTPS/JSON")
+Rel(backend, database, "Reads/Writes", "Mongoose ODM")
+Rel(backend, auth, "Validates token via", "HTTPS/JWT")
+Rel(auth, user, "Authenticates", "OIDC")
+
+@enduml
