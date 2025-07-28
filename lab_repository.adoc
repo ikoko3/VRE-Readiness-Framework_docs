@@ -254,6 +254,19 @@ image:out/uml/level_upgrade_state_diagram/diagram.svg[Level Diagram]
 #### Exit Condition
 This entity acts as an item in a check list, which shall be marked as completed, for the lab to move to the next stage.
 
+#### Exit Condition Configuration
+A configuration is created to save the exit conditions for each level. When a lab is promoted to a new level, this configuration is used to retrieve the exit conditions which are added to the VL entity.
+
+
+Indicative Table:
+image:out/uml/ec_configuration/ec_configuration.svg[Exit Condition Configuration]
+
+Main algorithm:
+image:out/uml/new_ec_algorithm/Level Update Algorithm.svg[Exit Condition Algorithm]
+
+
+This logic can be extended and more dimensions can be added to the configuration. This will apply different exit conditions for different labs, depending on their type or the research they are used for.
+
 ##### Status
 This list of the statuses should describe an exit condition.
 
