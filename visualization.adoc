@@ -27,17 +27,40 @@ This page describes several different components, and it proposes a grouping but
 ### Technology Stack
 The PoC is developed using Next.js (React) based on the link:https://github.com/NaaVRE/NaaVRE-architecture[architecture] of the newest version of NaaVRE.
 
+## Main Actions
+The main page display the list of the available Labs along with some complementary actions for its users.
+
+### Lab list
+
+One of the key items in this page is a list of the available Labs. Each item can be clicked to navigate to the details of the Lab.
+
+So far the design hasn't taken into condieration further filtering options like searching or pagination, making this page less usable for larger number of Labs.
+
+### Create Lab Request
+
+Along with the Lab list, a special button is available to create a new Lab request. This will open a form that allows the user to fill in the details of the new Lab.
+
+### Lab Request Details
+
+This page is visible only to users with the right permissions. It displays the details of the Lab request, including the status, and any other relevant information. When the request is approved, the Lab will be created.
+
+### VLs History
+This page displays a graph of all the VL instances with their corresponding readiness levels. It allows users to see the history of the VLs and their progress over time.
+
+### User Labs
+There is a page that displays the VLs for the user that is currently logged in. A user can have different roles in different Labs, so this page will display all the Labs that the user is part of, along with their roles.
+
+### Access to the pages
+The majority of those pages can be accessed without the need to log in. However, some pages require the user to be logged in, such as the Lab Request Details and User Labs pages. This is to ensure that only authorized users can access sensitive information.
+
+
 ## Lab State 
+When a lab is selected, the user can see the details of the Lab, including its readiness level, exit conditions, and other relevant information.
 
 ### Lab Data
+The main lab data consist of the Lab level, the exit conditions and the related users. These sections are diffecnt components that can be reused in other parts of the application. 
 
 ### Exit Conditions
+This section displays the exit conditions of the Lab, including their status and any relevant information. Each exit condition can be clicked to navigate to its details.
 
-### User Role Information
 
-
-## Coordinator Portal
-
-### Custom Actions
-
-## Dependencies

@@ -31,18 +31,24 @@ A virtual research environment (VRE) or virtual laboratory is an online system h
 ## Scope
 
 ### Vision
-_TODO_ 
+The vision of this framework is to provide a structured approach to assess and enhance the readiness of virtual research labs, ensuring they meet the needs of researchers and stakeholders effectively.
 
 ### Context
-_TODO_ 
+The context of this framework is rooted in the increasing complexity of research environments and the need for effective collaboration tools. As research becomes more interdisciplinary and data-driven, virtual research labs must evolve to support diverse workflows and stakeholder requirements. Additionally, the increasing number of virtual research labs necessitates a standardized approach to assess their readiness and effectiveness.
 
 ### Goals
-_TODO_ 
+The goals of this framework include:
+
+1. Establishing clear criteria for assessing the readiness of virtual research labs.
+2. Providing a roadmap for enhancing the capabilities of these labs.
+3. Facilitating collaboration and knowledge sharing among researchers.
+4. Supporting the development of best practices for virtual research environments.
 
 
 
 ## Architecture
 ### Overview
+The following image provides an overview of the architecture proposal for the Virtual Research Lab Readiness Level Framework.
 
 image:out/uml/architecture_proposal/architecture_proposal.svg[Proposal]
 

@@ -12,13 +12,46 @@
 
 ## Introduction
 
-This document describes future steps that can be taken to automate further processes and provide value to the framework.
+This document describes future projects and apps that can be integrated to the ecosystem to automate further processes and provide value to the framework.
 
 ## CMS Tool
-Explain why an external Content Management System can centralize the information and display it further.
+An external Content Management System (CMS) can centralize the information and display it further. By using a CMS, all relevant documents, guidelines, and resources can be stored in a single location, making it easier for researchers to access the information they need. Additionally, a CMS can provide version control, ensuring that users are always working with the most up-to-date materials. This tool will mainly provide  instructions for the exit conditions and the purpose of the framework to the new and existing users. 
+
+So far this https://naavre.net/docs/readiness_levels/[documentation project] has the same purpose, but it is not a CMS. It is a set of documents that describe the framework and its components. A CMS would provide a more structured and user-friendly way to present this information.
+
+The integration with the rest of the framework is mainly via sharing the correct links to the relevant documents and resources. This can be done through the framework's user interface or by providing direct links in the documentation.
 
 ## Unified PM tools
-Explain why there are already different PM tools and there should be a system to indicate what needs to be attended.
+Each research group uses different project management tools. A unified tool can help in standardizing the processes and making it easier to track progress across different labs. A service like this could automate the creation of tasks, track their progress, and provide a unified view of all ongoing projects for the framework.
+
+[TIP]
+Use case: A coordinator wants to create a disucssion thread for a specific exit condition. With the proposed framework, they would have to manually create the ticket in the PM tool, assign it to the relevant team members, and track its progress. With a unified PM tool, this process can be automated, allowing the coordinator to focus on higher-level tasks rather than administrative work.
 
 ## Notification System
-Notification Platforms can be utilized to engage its users
+Notification Platforms can be utilized to engage its users and keep them informed about important updates, changes, or actions required within the virtual research lab environment. 
+
+One of the main use cases would be to send notifications to users when certain actions are needed and thus simplify the communication process.
+
+[TIP]
+Use case: A golden user has requested the verification of a VL. The coordinator could potentially received a notification about this request, prompting them to take action. 
+
+[TIP]
+Use case 2: A VL seems to be stuck in a certain readiness level for a long time. The system could send a notification to the coordinator, prompting them to investigate the situation and take necessary actions.
+
+----
+Some examples of notification platforms that can be integrated into the framework are:
+- Amazon SNS
+- Firebase Cloud Messaging
+- Twilio
+
+Some of these services mainly attract enterprises, but they can be used for smaller projects as well. The integration with the framework can be done through APIs, allowing the framework to send notifications based on specific events or conditions.
+----
+
+## Orchestration Service
+It is considered a good idea to have a service that can orchestrate the different components of the framework, allowing for better integration and management of resources. This service can also act as a test environment to ensure that the new features are validated before they are formalized into the framework.
+
+## NaaVRE Integration
+The framework is designed around the NaaVRE architecture, and further actions that can be done via this framework should be also integrated into the NaaVRE platform. This includes the ability to create and manage virtual research labs, track their readiness levels, and provide access to the relevant resources and tools.
+
+[TIP]
+Use case: The framework has a VL creation flow but so far it is not integrated with the NaaVRE platform. This means that users have to manually create the VLs in NaaVRE, which can be time-consuming and error-prone. By integrating the framework with NaaVRE, the VL creation process can be automated, allowing users to create and manage their labs more efficiently.

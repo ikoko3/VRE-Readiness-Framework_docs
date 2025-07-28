@@ -1,0 +1,26 @@
+@startuml
+title Level Configuration Table
+
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+
+skinparam class {
+  BackgroundColor<<T>> White
+  BorderColor Black
+  FontSize 12
+}
+
+note as Legend
+  This is mock data.
+  Each level includes a set of exit conditions.
+end note
+
+class "Level | Exit Conditions" as Table1 <<T>> {
+  || Level || Exit Conditions ||
+  | L0 | - Has Scientific Goal \n - Has Plan |
+  | L1 | - Initialized Repository \n - Defined Components |
+  | L2 | - Data Ready \n - Infra Provisioned \n - Workflow Runs |
+  | L3 | - Peer Review Published \n - Training Guide Available |
+  | L4 | - Ready for Research Infra \n - Monitoring Enabled |
+}
+
+@enduml

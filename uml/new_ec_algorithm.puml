@@ -1,0 +1,17 @@
+@startuml Level Update Algorithm
+start
+
+:Calculate next Level;
+
+if (VL has reached max level?) then (yes)
+  :Retrieve selected Level from the Configuration;
+  :Generate new Exit Conditions based on Level;
+  :Attach Exit Conditions to VL entity;
+  :Update the VL entity;
+else (no)
+  :No Action;
+endif
+
+stop
+
+@enduml
