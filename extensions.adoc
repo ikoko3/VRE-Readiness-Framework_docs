@@ -50,6 +50,10 @@ Some of these services mainly attract enterprises, but they can be used for smal
 ## Orchestration Service
 It is considered a good idea to have a service that can orchestrate the different components of the framework, allowing for better integration and management of resources. This service can also act as a test environment to ensure that the new features are validated before they are formalized into the framework.
 
+[TIP]
+Use case: A new user is registered to the NaaVRE environment, and the user entity needs to be synchronized within some other microservices as well. The orchestration service can handle this by triggering the necessary actions in the other services, ensuring that the user is properly set up across the entire framework.
+
+
 ## NaaVRE Integration
 The framework is designed around the NaaVRE architecture, and further actions that can be done via this framework should be also integrated into the NaaVRE platform. This includes the ability to create and manage virtual research labs, track their readiness levels, and provide access to the relevant resources and tools.
 
