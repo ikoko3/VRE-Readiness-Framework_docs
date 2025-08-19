@@ -250,6 +250,32 @@ image:out/uml/level_upgrade_state_diagram/diagram.svg[Level Diagram]
 #### Exit Condition
 This entity acts as an item in a check list, which shall be marked as completed, for the lab to move to the next stage.
 
+##### Status
+This list of the statuses should describe an exit condition.
+.Status
+* Not Started
+* In Progress
+* Pending Review
+* Under Discussion
+* Verified
+
+image:out/uml/exit_condition_state_diagram/exitCondition_kpi.svg[exit condition statuses]
+
+Aditionally, the exit condition entity can have a category or type enum to indicate the type and allow easier filtering when displaying or managing exit conditions.
+
+##### Metadata
+The exit condition entity can contain several fields as metadata to improve usability.
+
+- *Comments*: Comments can be added, providing additional context or information about the exit condition.
+- *Discussion URL*: URL to an external discussion thread, e.g. a ticket in a Project Management tool.
+- *Tooltip URL*: This can be a link with generic information related to the specific exit condition.
+- *Created/Updated At*: Timestamps indicating when the exit condition was created or last updated.
+- *Created/Updated By*: Usernames or IDs indicating who created or last updated the exit condition.
+
+
+
+
+
 #### Exit Condition Configuration
 A configuration is created to save the exit conditions for each level. When a lab is promoted to a new level, this configuration is used to retrieve the exit conditions which are added to the VL entity.
 
@@ -263,18 +289,7 @@ image:out/uml/new_ec_algorithm/Level Update Algorithm.svg[Exit Condition Algorit
 
 This logic can be extended and more dimensions can be added to the configuration. This will apply different exit conditions for different labs, depending on their type or the research they are used for.
 
-##### Status
-This list of the statuses should describe an exit condition.
 
-//TODO: Verify these
-.Status
-* Not Started
-* In Progress
-* Pending Review
-* Under Discussion
-* Verified
-
-image:out/uml/exit_condition_state_diagram/exitCondition_kpi.svg[exit condition statuses]
 
 
 #### Automatic assessment

@@ -7,7 +7,7 @@
 !endif
 
 SHOW_PERSON_OUTLINE()
-' Tags support no spaces in the name (based on the underlining stereotypes, which don't support spaces anymore). 
+' Tags support no spaces in the name (based on the underlining stereotypes, which don't support spaces anymore).
 ' If spaces are requested in the legend, legend text with space has to be defined
 AddElementTag("backendContainer", $fontColor=$ELEMENT_FONT_COLOR, $bgColor="#335DA5", $shape=EightSidedShape(), $legendText="backend container (eight sided)")
 AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
@@ -15,52 +15,48 @@ AddRelTag("sync/async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $
 
 title Virtual Research Environment Readiness Framework Architecture Proposal
 
-Person(developer, Core Developer, "Creates/Maintains new Virtual Research Environments")
-Person(coordinator, Coordinator, "Technical owner of the lab, can push it to next levels")
-Person(user, User, "Domain scientist using the virtual lab for their own research")
-
+Person(developer, Service/Components Developer, "Builds and maintains Virtual Labs")
+Person(coordinator, Coordinator, "Technical owner of the Virtual Lab, can push it to next levels")
+Person(user, Golden User (End User), "Domain scientist using the virtual lab for their research")
 
 System_Boundary(c1, "Readiness Framework") {
-    Container(web_app, "Web Application", "Tech Stack Unknown", "Visualize information regarding the level/readiness SPA")
-    Container(orchestrator, "Orchestrator", "Tech Stack Unknown, Docker", "Provides the rest of the connections with external services API", $tags="backendContainer")
-    ContainerDb(database, "Database", "Database", "Stores information regarding the external integrations")
+    Container(web_app, "Web Application", "Next.js", "Visualize information regarding the level/readiness (SPA)")
+    Container(orchestrator, "Orchestrator", "Node.js, Docker", "Provides the connections with external services API", $tags="backendContainer")
+    ContainerDb(database, "Orchestrator Database", "Database", "Stores information regarding the external integrations")
 
     System_Boundary(core, "Core System") {
-        ContainerDb(core_database, "Core Database", "Mongo Database", "Stores the Readiness level and Exit Points")
-        Container(core_service, "Core Service", "Node.js, Docker", "Minimal Service for Readiness Levels and Exit Points", $tags="backendContainer")
+        ContainerDb(core_database, "Lab Repository Database", "MongoDB", "Stores the Readiness level and Exit Points")
+        Container(core_service, "Lab Repository", "Node.js, Docker", "Minimal Service for Readiness Levels and Exit Conditions", $tags="backendContainer")
     }
-
 }
 
-Rel(web_app, orchestrator, "Uses", "async, JSON/HTTPS", $tags="async")
+Rel(web_app, orchestrator, "Uses", "HTTPS/JSON", $tags="async")
 
-Rel(orchestrator, core_service, "Read/Update core entities", "async, JSON/HTTPS", $tags="async")
+Rel(orchestrator, core_service, "Read/Update core entities", "HTTPS/JSON", $tags="async")
 Rel(orchestrator, database, "Read/Update", "sync")
 Rel_Back_Neighbor(core_database, core_service, "Read/Update", "sync")
 
-
-System_Ext(notifications_system, "Notifications", "Unknown Notifications Platform to engage the users")
+System_Ext(notifications_system, "Notifications", "Notifications Platform to engage the users")
 System_Ext(naavre, "NaaVRE", "Notebook as a Virtual Research Environment")
+System_Ext(keycloak, "Keycloak", "Identity and Access Management")
 System_Ext(proj_management, "Project Management Tool", "Context specific tickets for support and media sharing (Jira/Asana/etc)")
 System_Ext(cms, "Content Management System", "Helpful information and content for each level upgrade")
 
-
 Rel(coordinator, web_app, "Edits Virtual Research Environment Levels", "HTTPS")
 Rel(developer, web_app, "Views Virtual Research Environment Levels", "HTTPS")
-
 
 Rel_Back(developer, notifications_system, "Engages users with Notifications")
 Rel_Back(notifications_system, orchestrator, "Triggers", "notification channels")
 Rel_Neighbor(orchestrator, naavre, "Partial Readiness Level Detection", "sync, HTTPS", $tags="sync/async")
 Rel_D(orchestrator, proj_management, "Create/Update Related Issue", "HTTPS")
-Rel(web_app, cms, "Retrives level specific information", "sync, JSON/HTTPS", $tags="async")
+Rel(web_app, cms, "Retrieves level specific information", "sync, HTTPS/JSON", $tags="async")
 
-Rel(user, naavre, "Expirements in the Lab")
-Rel(developer, naavre, "Create/Develop Research Environment")
+Rel(keycloak, web_app, "Authenticate Users")
+Rel(user, naavre, "Experiments in the Lab")
+Rel(developer, naavre, "Creates/Develops Research Environment")
 
 Rel(coordinator, proj_management, "Provides Support via")
 Rel_Back(developer, proj_management, "Receives feedback for Readiness Level")
-
 
 SHOW_LEGEND()
 footer drawn with PlantUML v. %version() and C4-PlantUML v. C4Version()
